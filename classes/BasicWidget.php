@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Widget Class
  */
-class BasicWidget extends \Modern\Wordpress\Plugin\Widget
+class BasicWidget extends \MWP\Framework\Plugin\Widget
 {
  	/**
 	 * @var	Plugin (Do Not Remove)
@@ -36,7 +36,7 @@ class BasicWidget extends \Modern\Wordpress\Plugin\Widget
 	 *
 	 * @var	string
 	 */
-	public $description = 'An example modern wordpress widget';
+	public $description = 'An example mwp application framework widget';
 	
 	/**
 	 * Widget Settings

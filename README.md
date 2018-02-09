@@ -1,5 +1,5 @@
 # Plugin Boilerplate
-Welcome to the boilerplate plugin using Modern Wordpress. This boilerplate can be automatically downloaded and customized for your new project using the WP CLI. Visit the [Modern Wordpress project](https://github.com/Miller-Media/modern-wordpress) page for quick start instructions. 
+Welcome to the boilerplate plugin using the MWP Application Framework. This boilerplate can be automatically downloaded and customized for your new project using the WP CLI. Visit the [MWP Framework project](https://github.com/Miller-Media/modern-wordpress) page for quick start instructions. 
 
 * [Creating PHP Classes](#php-classes)
 * [Using templates](#html-templating)
@@ -15,7 +15,7 @@ Welcome to the boilerplate plugin using Modern Wordpress. This boilerplate can b
 
 # Rundown
 * All of your plugin classes will be namespaced with your **\VendorName\PackageName** prefix.
-* The modern wordpress framework can be accessed using `$mwp = \Modern\Wordpress\Framework::instance();`
+* The mwp framework can be accessed using `$mwp = \MWP\Framework\Framework::instance();`
 * Wordpress annotated methods on objects will only be attached to wordpress core when you do this:<br> `$mwp->attach( $objectInstance );`
 
 ## PHP Classes
@@ -34,16 +34,16 @@ $shinyNewObject = new \VendorName\PackageName\ClassName();
 ### Hook it into wordpress core:
 *Only needed if you have one or more @Wordpress annotations in the class*
 ```php
-$framework = \Modern\Wordpress\Framework::instance();
+$framework = \MWP\Framework\Framework::instance();
 $framework->attach( $shinyNewObject );
 ```
 
 ### Singletons
-If you want to implement your class using the singleton design pattern in order to make sure that only one copy of your object is ever instantiated, simply extend the `\Modern\Wordpress\Pattern\Singleton` base class and define a `$_instance` property for your class.
+If you want to implement your class using the singleton design pattern in order to make sure that only one copy of your object is ever instantiated, simply extend the `\MWP\Framework\Pattern\Singleton` base class and define a `$_instance` property for your class.
 ```php
 namespace VendorName\PackageName;
 
-class MyClass extends \Modern\Wordpress\Pattern\Singleton
+class MyClass extends \MWP\Framework\Pattern\Singleton
 {
     /**
      * @var object	All singletons must define this property
@@ -111,7 +111,7 @@ Your plugin includes a bootstrapped settings class that you can use to easily ad
  * ...
  * @Wordpress\Options\Field( name="setting1", type="text", title="Setting 1", default="Hello Dollie." )
  */
-class Settings extends \Modern\Wordpress\Plugin\Settings
+class Settings extends \MWP\Framework\Plugin\Settings
 ```
 
 ### Use the setting in your code:
@@ -128,12 +128,12 @@ if ( $setting_value == 'Hello Dollie.' ) {
 }
 ```
 ## Widgets
-Modern wordpress provides a bootstrap class that you can extend to add widgets to your plugin. To create a new widget, add a new class that extends `\Modern\Wordpress\Plugin\Widget`. Then enable it for your plugin.
+MWP Application Framework provides a bootstrap class that you can extend to add widgets to your plugin. To create a new widget, add a new class that extends `\MWP\Framework\Plugin\Widget`. Then enable it for your plugin.
 
 ```php
 namespace VendorName\PackageName;
 
-class WidgetClass extends \Modern\Wordpress\Plugin\Widget
+class WidgetClass extends \MWP\Framework\Plugin\Widget
 {
  	// Required property
 	protected static $plugin;
@@ -225,7 +225,7 @@ var mainController = mwp.controller( 'controller-name',
 });
 ```
 **Brief explanation of what's going on here:**<br>
-* `mwp.controller()` is registering the controller by the name of `controller-name` with modern wordpress.
+* `mwp.controller()` is registering the controller by the name of `controller-name` with MWP Application Framework.
 * The `init()` function is always called on each controller automatically when the page has loaded.
 * The `viewModel` property of the controller is what is exposed to your HTML for data bindings.
 * The `ko.observable()` wrapper is what allows your HTML to automatically update when that value changes. **Note:** The `setting1` property of the view model is not an actual value, but a function that returns/sets a value.
@@ -248,7 +248,7 @@ var mainController = mwp.controller( 'controller-name',
 
 ## Database Records
 
-Modern Wordpress provides a bootstrap class which implements the Active Record design pattern and allows you to quickly model and manipulate your database rows as objects. 
+MWP Application Framework provides a bootstrap class which implements the Active Record design pattern and allows you to quickly model and manipulate your database rows as objects. 
 
 ### Create a database table and begin tracking it in your plugin
 
@@ -272,7 +272,7 @@ $ wp mwp add-class myplugin-slug TableData
 
 namespace VendorName\PackageName;
 
-class TableData extends \Modern\Wordpress\Pattern\ActiveRecord
+class TableData extends \MWP\Framework\Pattern\ActiveRecord
 {
 	/**
 	 * @var	array		Required for all active record classes
@@ -348,7 +348,7 @@ $record->delete();
 ```
 
 ## Active Record Display Tables
-If you want to display a table in the WP Admin that the end user can use to view and manage the active records of a given type, then modern wordpress provides a convenient ActiveRecordTable helper for active records, and factory method that you can use to access it. Here is an example of how you can create a display table:
+If you want to display a table in the WP Admin that the end user can use to view and manage the active records of a given type, then MWP Application Framework provides a convenient ActiveRecordTable helper for active records, and factory method that you can use to access it. Here is an example of how you can create a display table:
 
 ```php
 
@@ -390,9 +390,9 @@ $table->display();
 ```
 
 ## Form Helper
-Modern wordpress can help you build and process the data from submitted forms. Behind the scenes, it uses the [Piklist framework](https://piklist.com/learn/section/fields/) to construct form fields. Therefore, the available fields and their configuration parameters are the same as what is documented on the Piklist website.
+MWP Application Framework can help you build and process the data from submitted forms. Behind the scenes, it uses the [Piklist framework](https://piklist.com/learn/section/fields/) to construct form fields. Therefore, the available fields and their configuration parameters are the same as what is documented on the Piklist website.
 
-Here is an example of how to build and process the data using the modern wordpress form helper:
+Here is an example of how to build and process the data using the MWP Application Framework form helper:
 ```php
 /* somewhere in php user land... */
 $plugin = \VendorName\PackageName\Plugin::instance();
@@ -436,10 +436,10 @@ echo $form->render();
 ```
 
 ## Task Queues
-You can leverage the task runner built into modern wordpress to run cron type tasks or run background processing tasks. To use the task runner:
+You can leverage the task runner built into MWP Application Framework to run cron type tasks or run background processing tasks. To use the task runner:
 
 ```php
-use \Modern\Wordpress\Task;
+use \MWP\Framework\Task;
 
 // Sample configuration for your task. The only required option is an 'action' hook
 $config = array
@@ -556,10 +556,10 @@ $ bin/install-wp-tests.sh wordpress_test root '' localhost latest
 * `localhost` is the MySQL server host
 * `latest` is the wordpress version
 
-You must then install modern wordpress into the newly created testing wordpress environment:
+You must then install MWP Application Framework into the newly created testing wordpress environment:
 
 ```
-$ wp plugin install https://github.com/Miller-Media/modern-wordpress/raw/master/builds/modern-framework-latest-stable.zip --activate --path="/tmp/wordpress"
+$ wp plugin install https://github.com/Miller-Media/mwp-wordpress/raw/master/builds/mwp-framework-latest-stable.zip --activate --path="/tmp/wordpress"
 ```
 
 After your testing environment has been set up, you simply need to run `phpunit` from the working directory of your plugin.

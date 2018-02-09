@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Plugin Class
  */
-class Plugin extends \Modern\Wordpress\Plugin
+class Plugin extends \MWP\Framework\Plugin
 {
 	/**
 	 * Instance Cache - Required

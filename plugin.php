@@ -5,7 +5,6 @@
  * Description: {plugin_description}
  * Author: {plugin_author}
  * Author URI: {plugin_author_url}
- * Depends: lib-modern-framework
  * Version: 0.0.0
  */
  
@@ -29,7 +28,7 @@ if ( ! class_exists( 'BoilerplatePlugin' ) )
 			$plugin->addSettings( $settings );
 			
 			/* Connect annotated resources to wordpress core */
-			$framework = \Modern\Wordpress\Framework::instance()
+			$framework = \MWP\Framework\Framework::instance()
 				->attach( $plugin )
 				->attach( $settings )
 				;
@@ -39,10 +38,10 @@ if ( ! class_exists( 'BoilerplatePlugin' ) )
 		}
 		
 		public static function status() {
-			if ( ! class_exists( 'ModernWordpressFramework' ) ) {
+			if ( ! class_exists( 'MWPFramework' ) ) {
 				echo '<td colspan="3" class="plugin-update colspanchange">
 						<div class="update-message notice inline notice-error notice-alt">
-							<p><strong style="color:red">INOPERABLE.</strong> Please activate <a href="' . admin_url( 'plugins.php?page=tgmpa-install-plugins' ) . '"><strong>Modern Framework for Wordpress</strong></a> to enable the operation of this plugin.</p>
+							<p><strong style="color:red">INOPERABLE.</strong> Please activate <a href="' . admin_url( 'plugins.php?page=tgmpa-install-plugins' ) . '"><strong>MWP Application Framework</strong></a> to enable the operation of this plugin.</p>
 						</div>
 					  </td>';
 			}
@@ -66,14 +65,14 @@ if ( ! class_exists( 'BoilerplatePlugin' ) )
 	/**
 	 * DO NOT REMOVE
 	 *
-	 * This plugin depends on the modern wordpress framework.
+	 * This plugin depends on the mwp application framework.
 	 * This block ensures that it is loaded before we init.
 	 */
-	if ( class_exists( 'ModernWordpressFramework' ) ) {
+	if ( class_exists( 'MWPFramework' ) ) {
 		BoilerplatePlugin::init();
 	}
 	else {
-		add_action( 'modern_wordpress_init', array( 'BoilerplatePlugin', 'init' ) );
+		add_action( 'mwp_framework_init', array( 'BoilerplatePlugin', 'init' ) );
 	}
 	
 }

@@ -19,13 +19,13 @@ if ( ! class_exists( 'WP_UnitTestCase' ) )
 class BoilerplatePluginTest extends WP_UnitTestCase 
 {
 	/**
-	 * Test that the plugin is a modern wordpress plugin
+	 * Test that the plugin is a mwp application framework plugin
 	 */
 	public function test_plugin_class() 
 	{
 		$plugin = \MillerMedia\Boilerplate\Plugin::instance();
 		
-		// Check that the plugin is a subclass of Modern\Wordpress\Plugin 
-		$this->assertTrue( $plugin instanceof \Modern\Wordpress\Plugin );
+		// Check that the plugin is a subclass of MWP\Framework\Plugin 
+		$this->assertTrue( $plugin instanceof \MWP\Framework\Plugin );
 	}
 }
