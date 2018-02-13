@@ -32,9 +32,24 @@ include_once 'plugin-dependency-config.php';
 add_action( 'after_plugin_row_' . plugin_basename( dirname( __DIR__ ) . '/plugin.php' ), array( 'BoilerplatePlugin', 'status' ) );
 
 /**
+ * Register extensions
+ *
+ * @return array
+ */
+add_filter( 'mwp_framework_extension_dirs', function( $dirs ) {
+	if ( is_dir( dirname( __DIR__ ) . '/extensions' ) ) {
+		$dirs[] = array( 'namespace' => 'MWP\Boilerplate\Extensions', 'path' => dirname( __DIR__ ) . '/extensions' );
+	}
+	return $dirs;
+});
+
+/**
  * Initialize the plugin on framework init
+ *
+ * @return	void
  */
 add_action( 'mwp_framework_init', function() {
 	$plugin	= MWP\Boilerplate\Plugin::instance();
 	$plugin->setPath( rtrim( plugin_dir_path( dirname( __DIR__ ) . '/plugin.php' ), '/' ) );
 });
+
