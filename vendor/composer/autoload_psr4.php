@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'MillerMedia\\Boilerplate\\' => array($baseDir . '/classes'),
+    'MWP\\Boilerplate\\' => array($baseDir . '/classes'),
 );

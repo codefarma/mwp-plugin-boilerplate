@@ -11,14 +11,15 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) or ! WP_UNINSTALL_PLUGIN ) {
 	die( 'Access denied.' );
 }
 
-if ( file_exists( WP_PLUGINS_DIR . '/mwp-framework/plugin.php' ) )
+if ( file_exists( __DIR__ . '/framework/plugin.php' ) ) {
 {
-	include_once WP_PLUGINS_DIR . '/mwp-framework/plugin.php';
+	include_once __DIR__ . '/framework/plugin.php';
 
 	require_once 'vendor/autoload.php';
 
 	/* Get the plugin instance */
-	$plugin = \MillerMedia\Boilerplate\Plugin::instance();
+	$plugin = MWP\Boilerplate\Plugin::instance();
+	$plugin->setPath( rtrim( plugin_dir_path( __DIR__ . '/plugin.php' ), '/' ) );
 
 	/**
 	 * Uninstall it

@@ -8,7 +8,7 @@
  * @link: {plugin_author_url}
  * @since: {date_time}
  */
-namespace MillerMedia\Boilerplate;
+namespace MWP\Boilerplate;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Access denied.' );

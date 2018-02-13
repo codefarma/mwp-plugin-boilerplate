@@ -23,7 +23,7 @@ class BoilerplatePluginTest extends WP_UnitTestCase
 	 */
 	public function test_plugin_class() 
 	{
-		$plugin = \MillerMedia\Boilerplate\Plugin::instance();
+		$plugin = \MWP\Boilerplate\Plugin::instance();
 		
 		// Check that the plugin is a subclass of MWP\Framework\Plugin 
 		$this->assertTrue( $plugin instanceof \MWP\Framework\Plugin );
