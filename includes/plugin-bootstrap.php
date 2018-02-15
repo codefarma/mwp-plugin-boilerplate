@@ -36,12 +36,12 @@ add_action( 'after_plugin_row_' . plugin_basename( dirname( __DIR__ ) . '/plugin
  *
  * @return array
  */
-add_filter( 'mwp_framework_extension_dirs', function( $dirs ) {
-	if ( is_dir( dirname( __DIR__ ) . '/extensions' ) ) {
+if ( is_dir( dirname( __DIR__ ) . '/extensions' ) ) {
+	add_filter( 'mwp_framework_extension_dirs', function( $dirs ) {
 		$dirs[] = array( 'namespace' => 'MWP\Boilerplate\Extensions', 'path' => dirname( __DIR__ ) . '/extensions' );
-	}
-	return $dirs;
-});
+		return $dirs;
+	});
+}
 
 /**
  * Initialize the plugin on framework init
