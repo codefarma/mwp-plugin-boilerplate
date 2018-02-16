@@ -17,7 +17,7 @@ if ( class_exists( 'BoilerplatePlugin' ) ) {
 	return;
 }
 
-/* Dependencies */
+/* Autoloaders */
 include_once 'includes/plugin-bootstrap.php';
 
 /**

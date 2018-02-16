@@ -33,21 +33,21 @@ class Plugin extends \MWP\Framework\Plugin
 	/**
 	 * Main Stylesheet
 	 *
-	 * @Wordpress\Stylesheet
+	 * @MWP\WordPress\Stylesheet
 	 */
 	public $mainStyle = 'assets/css/style.css';
 	
 	/**
 	 * Main Javascript Controller
 	 *
-	 * @Wordpress\Script( deps={"mwp"} )
+	 * @MWP\WordPress\Script( deps={"mwp"} )
 	 */
 	public $mainScript = 'assets/js/main.js';
 	
 	/**
 	 * Enqueue scripts and stylesheets
 	 * 
-	 * @Wordpress\Action( for="wp_enqueue_scripts" )
+	 * @MWP\WordPress\Action( for="wp_enqueue_scripts" )
 	 *
 	 * @return	void
 	 */
