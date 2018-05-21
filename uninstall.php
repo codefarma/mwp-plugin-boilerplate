@@ -14,8 +14,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) or ! WP_UNINSTALL_PLUGIN ) {
 if ( file_exists( __DIR__ . '/framework/plugin.php' ) )
 {
 	include_once __DIR__ . '/framework/plugin.php';
-
-	require_once 'vendor/autoload.php';
+	include_once __DIR__ . '/plugin.php';
 
 	/* Get the plugin instance */
 	$plugin = MWP\Boilerplate\Plugin::instance();
