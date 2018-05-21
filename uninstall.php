@@ -11,7 +11,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) or ! WP_UNINSTALL_PLUGIN ) {
 	die( 'Access denied.' );
 }
 
-if ( file_exists( __DIR__ . '/framework/plugin.php' ) ) {
+if ( file_exists( __DIR__ . '/framework/plugin.php' ) )
 {
 	include_once __DIR__ . '/framework/plugin.php';
 
