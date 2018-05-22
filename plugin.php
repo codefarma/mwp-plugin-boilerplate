@@ -53,7 +53,7 @@ add_action( 'mwp_framework_init', function()
 	 */
 	$settings = MWP\Boilerplate\Settings::instance();
 	$plugin->addSettings( $settings );
-	$framework->attach( $settings );
+	// $framework->attach( $settings );
 	
 	/**
 	 * Plugin Widgets
@@ -62,6 +62,6 @@ add_action( 'mwp_framework_init', function()
 	 * by calling the enableOn() static method with the plugin instance to
 	 * be used for rendering its templates.
 	 */	
-	MWP\Boilerplate\BasicWidget::enableOn( $plugin );
+	// MWP\Boilerplate\BasicWidget::enableOn( $plugin );
 	
 } );
