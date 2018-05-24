@@ -27,17 +27,14 @@ include_once 'includes/plugin-bootstrap.php';
  */
 add_action( 'mwp_framework_init', function() 
 {
-	/**
-	 * Get the framework instance
-	 */
+	/* Framework */
 	$framework = MWP\Framework\Framework::instance();
 	
 	/**
 	 * Plugin Core 
 	 *
-	 * Attach the functionality contained within the core
-	 * Plugin class. Splitting functionality into multiple
-	 * classes requires attaching each singleton instance.
+	 * Grab the main plugin instance and attach its annotated
+	 * callbacks to WordPress core.
 	 */
 	$plugin	= MWP\Boilerplate\Plugin::instance();
 	$framework->attach( $plugin );
@@ -45,23 +42,13 @@ add_action( 'mwp_framework_init', function()
 	/**
 	 * Plugin Settings 
 	 *
-	 * Add a simple plugin settings page. The settings instance
-	 * is registered with the plugin so the settings can be easily
-	 * fetched via the getSetting() method on the plugin, and then
-	 * it is attached to the framework so that the settings can be
-	 * given their own admin page.
+	 * Register a settings storage to the plugin which can be
+	 * used to get/set/save settings to the wp_options table.
 	 */
 	$settings = MWP\Boilerplate\Settings::instance();
 	$plugin->addSettings( $settings );
-	// $framework->attach( $settings );
 	
-	/**
-	 * Plugin Widgets
-	 *
-	 * Widgets that extend the MWP\Framework\Plugin\Widget class can be enabled
-	 * by calling the enableOn() static method with the plugin instance to
-	 * be used for rendering its templates.
-	 */	
-	// MWP\Boilerplate\BasicWidget::enableOn( $plugin );
+	/* Register settings to a WP Admin page */
+	// $framework->attach( $settings );
 	
 } );
