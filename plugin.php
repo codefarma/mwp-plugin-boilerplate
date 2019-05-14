@@ -18,7 +18,7 @@ if ( class_exists( 'BoilerplatePlugin' ) ) {
 }
 
 /* Autoloaders */
-include_once 'includes/plugin-bootstrap.php';
+include_once __DIR__ . '/includes/plugin-bootstrap.php';
 
 /**
  * This plugin uses the MWP Application Framework to init.
