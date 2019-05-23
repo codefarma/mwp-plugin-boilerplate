@@ -1,5 +1,3 @@
-phpunit.xml.dist
 bin/
-tests/bootstrap.php
 tests/test-sample.php
 vendor/
