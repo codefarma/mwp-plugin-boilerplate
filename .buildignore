@@ -9,4 +9,5 @@ phpunit.xml.dist
 tests
 bin
 vendor/bin
-
+data/install-meta.php
+data/instance-meta.php
